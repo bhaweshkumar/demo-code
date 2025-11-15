@@ -1,0 +1,11 @@
+for i in {1..30}; do
+  if [ $((i % 2)) -eq 0 ]; then
+    aws sns publish \
+      --topic-arn arn:aws:sns:us-east-1:975050018118:TestNotification \
+      --message "FAIL message $i"
+  else
+    aws sns publish \
+      --topic-arn arn:aws:sns:us-east-1:975050018118:TestNotification \
+      --message "PASS message $i"
+  fi
+done

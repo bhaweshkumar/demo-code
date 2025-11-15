@@ -1,0 +1,33 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:us-east-1:222222222222:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:222222222222:log-group:/aws/lambda/queue_consumer:*"
+            ]
+        },
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:GetQueueAttributes",
+                "sqs:ReceiveMessage",
+                "sqs:ChangeMessageVisibility",
+                "sqs:DeleteMessage"
+            ],
+            "Resource": [
+                " arn:aws:sqs:us-east-1:222222222222:test-notification-main-queue"
+            ]
+        }
+    ]
+}
